@@ -20,8 +20,9 @@ function newConnection(socket) {
   console.log("new connection: " + socket.client.id);
 
   socket.on("mouse", mouseMessage);
-  // when you move the mouse, the coordinates are printed on the terminal
+  // when you move the mouse, the coordinates are printed on the terminal/server
   function mouseMessage(dataReceived) {
-    console.log(dataReceived);
+    console.log(socket.client.id, dataReceived);
+    socket.broadcast.emit("mouseBroadcast", dataReceived);
   }
 }
