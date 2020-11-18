@@ -22,6 +22,8 @@ function newConnection(socket) {
   let clientColor = getRandomColor();
 
   socket.emit("color", clientColor);
+  //send the color to all the oder clients
+  socket.broadcast.emit("newPlayer", clientColor);
 
   socket.on("mouse", mouseMessage);
   // when you move the mouse, the coordinates are printed on the terminal/server
