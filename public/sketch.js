@@ -34,6 +34,7 @@ function newConnection() {
 function drawOtherMouse(data) {
   push();
   fill(data.color);
+  noStroke();
   ellipse(data.x, data.y, 50);
   pop();
 }
