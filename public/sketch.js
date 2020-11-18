@@ -56,6 +56,7 @@ function draw() {
 function mouseMoved() {
   push();
   fill(myColor);
+  noStroke();
   ellipse(mouseX, mouseY, 50);
   pop();
   // create the message
