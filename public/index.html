@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
     <style>
@@ -8,11 +9,30 @@
         padding: 0;
         margin: 0;
       }
+      button {
+     font-family: 'Roboto Mono', monospace;
+     font-size: 12px;
+     border: 1.5px solid red;
+     border-radius: 6px;
+     color: red;
+     background-color: black;
+     padding: 6px 30px;
+     height: 40px;
+     width: 190;
+     outline: none;
+     cursor: pointer;
+   }
+
+   button:hover {
+     background-color: red;
+     color: white;
+   }
 
 
     </style>
     <script src="/socket.io/socket.io.js"></script>
     <script src="p5.min.js"></script>
+     <!-- <script src="addons/p5.sound.min.js"></script> -->
     <script src="p5.sound.min.js"></script>
     <script src="sketch.js"></script>
   </head>

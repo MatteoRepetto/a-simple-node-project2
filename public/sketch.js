@@ -1,5 +1,7 @@
 let socket = io();
 let myColor = 'white';
+let buttonPrint;
+let myCanvas;
 
 socket.on("connect", newConnection);
 socket.on("mouseBroadcast", drawOtherMouse);
@@ -43,9 +45,14 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth,windowHeight)
+  myCanvas = createCanvas(windowWidth, 700);
+  myCanvas.position(0, 90);
 
   background('white');
+
+  buttonPrint = createButton('SAVE');
+  buttonPrint.position(width/2, height/2);
+  buttonPrint.mousePressed(printCanvas);
 }
 
 function draw() {
@@ -53,7 +60,7 @@ function draw() {
 }
 
 function mouseMoved() {
-  
+
   push();
   stroke(myColor);
   line(mouseX, mouseY, pmouseX, pmouseY);
@@ -68,4 +75,9 @@ function mouseMoved() {
   };
   //send to the server
   socket.emit("mouse", message);
+}
+
+function printCanvas(){
+  print('Print');
+  saveCanvas(myCanvas, 'Draw', '.jpg');
 }
