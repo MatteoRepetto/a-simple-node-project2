@@ -10,16 +10,16 @@ function newPlayer(newPlayerColor) {
   console.log(newPlayerColor)
   //add a rect on the welcome message when a new player joins
   push();
-  fill('purple');
+  fill('white');
   noStroke();
   rectMode(CENTER);
-  rect(width/2, height/2, 300, 50);
+  rect(width/2, 40, 600, 50);
   pop();
 
   textAlign('center');
   textSize(30);
   fill(newPlayerColor);
-  text('New player joined ' + newPlayerColor, width/2, height/2);
+  text('New player joined ' + newPlayerColor, width/2, 40);
 }
 
 function setColor(assignedColor) {
@@ -33,9 +33,8 @@ function newConnection() {
 //Ellipse moved by another user
 function drawOtherMouse(data) {
   push();
-  fill(data.color);
-  noStroke();
-  ellipse(data.x, data.y, 50);
+  stroke(data.color);
+  line(data.x, data.y, data.px, data.py);
   pop();
 }
 
@@ -46,7 +45,7 @@ function preload(){
 function setup() {
   createCanvas(windowWidth,windowHeight)
 
-  background('purple');
+  background('white');
 }
 
 function draw() {
@@ -54,15 +53,17 @@ function draw() {
 }
 
 function mouseMoved() {
+  
   push();
-  fill(myColor);
-  noStroke();
-  line(mouseX, mouseY, 50);
+  stroke(myColor);
+  line(mouseX, mouseY, pmouseX, pmouseY);
   pop();
   // create the message
   let message = {
     x: mouseX,
     y: mouseY,
+    px: pmouseX,
+    py: pmouseY,
     color: myColor,
   };
   //send to the server
