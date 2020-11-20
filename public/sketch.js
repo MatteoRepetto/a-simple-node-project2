@@ -1,7 +1,9 @@
 let socket = io();
 let myColor = 'white';
 let buttonPrint;
+
 let myCanvas;
+//let playerCanvas;
 
 socket.on("connect", newConnection);
 socket.on("mouseBroadcast", drawOtherMouse);
@@ -15,13 +17,13 @@ function newPlayer(newPlayerColor) {
   fill('white');
   noStroke();
   rectMode(CENTER);
-  rect(width/2, 40, 600, 50);
+  rect(width/2, 10, 600, 50);
   pop();
 
   textAlign('center');
   textSize(30);
   fill(newPlayerColor);
-  text('New player joined ' + newPlayerColor, width/2, 40);
+  text('New player joined ' + newPlayerColor, width/2, 10);
 }
 
 function setColor(assignedColor) {
@@ -45,13 +47,16 @@ function preload(){
 }
 
 function setup() {
-  myCanvas = createCanvas(windowWidth, 700);
+  myCanvas = createCanvas(windowWidth, 450);
   myCanvas.position(0, 90);
+
+  //playerCanvas = createCanvas(800, 50);
+  //playerCanvas.position(windowWidth/2, windowHeight/2);
 
   background('white');
 
   buttonPrint = createButton('SAVE');
-  buttonPrint.position(width/2, height/2);
+  buttonPrint.position(width/2, 20);
   buttonPrint.mousePressed(printCanvas);
 }
 
