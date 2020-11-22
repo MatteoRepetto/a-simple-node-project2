@@ -1,8 +1,9 @@
 let socket = io();
-let myColor = 'white';
+let myColor = 'black';
 let buttonPrint;
 
 let myCanvas;
+let sweight = 3;
 //let playerCanvas;
 
 socket.on("connect", newConnection);
@@ -26,18 +27,19 @@ function newPlayer(newPlayerColor) {
   text('New player joined ' + newPlayerColor, width/2, 10);
 }
 
-function setColor(assignedColor) {
+/*function setColor(assignedColor) {
   myColor = assignedColor;
   //welcome message
-}
+}*/
 
 function newConnection() {
   console.log("your id: " + socket.id);
 }
-//Ellipse moved by another user
+//line moved by another user
 function drawOtherMouse(data) {
   push();
   stroke(data.color);
+  strokeWeight(data.weight);
   line(data.x, data.y, data.px, data.py);
   pop();
 }
@@ -47,7 +49,7 @@ function preload(){
 }
 
 function setup() {
-  myCanvas = createCanvas(windowWidth, 450);
+  myCanvas = createCanvas(windowWidth, 700);
   myCanvas.position(0, 90);
 
   //playerCanvas = createCanvas(800, 50);
@@ -62,12 +64,14 @@ function setup() {
 
 function draw() {
 
+
 }
 
 function mouseMoved() {
 
   push();
   stroke(myColor);
+  strokeWeight(sweight);
   line(mouseX, mouseY, pmouseX, pmouseY);
   pop();
   // create the message
@@ -77,9 +81,25 @@ function mouseMoved() {
     px: pmouseX,
     py: pmouseY,
     color: myColor,
+    weight: sweight,
   };
   //send to the server
   socket.emit("mouse", message);
+}
+
+function keyPressed() {
+  if (key == 'e' ) {
+    myColor = "white";
+    sweight = 10;
+  }
+  else if (key == 'b') {
+    myColor = "black";
+    sweight = 3;
+  }
+  else if (key == 'z'){
+    clear();
+    background('white');
+  }
 }
 
 function printCanvas(){

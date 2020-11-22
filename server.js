@@ -15,7 +15,7 @@ app.use(express.static("public"));
 let io = socket(server);
 
 io.on("connection", newConnection);
-
+//serve solo per il testo
 function newConnection(socket) {
   console.log("new connection: " + socket.client.id);
 
@@ -33,7 +33,7 @@ function newConnection(socket) {
   }
 }
 
-function getRandomColor() {
+/*function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
   for (var i = 0; i < 6; i++) {
@@ -43,4 +43,4 @@ function getRandomColor() {
     color = '#000000';
   }
   return color;
-}
+}*/
