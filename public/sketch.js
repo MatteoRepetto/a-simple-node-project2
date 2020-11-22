@@ -3,7 +3,7 @@ let myColor = 'black';
 let buttonPrint;
 
 let myCanvas;
-let sweight = 3;
+let sweight = 0;
 //let playerCanvas;
 
 socket.on("connect", newConnection);
@@ -87,10 +87,15 @@ function mouseMoved() {
   socket.emit("mouse", message);
 }
 
+
+//Buttons that change some line's aspects
 function keyPressed() {
   if (key == 'e' ) {
     myColor = "white";
     sweight = 10;
+  }
+  else if (key == 'k'){
+    sweight = 0;
   }
   else if (key == 'b') {
     myColor = "black";
@@ -100,7 +105,20 @@ function keyPressed() {
     clear();
     background('white');
   }
-}
+  else if (keyCode === UP_ARROW) {
+      sweight += 5;
+      if (sweight > 25){
+        sweight = 3;
+      }
+    }
+  else if (keyCode === DOWN_ARROW) {
+      sweight -= 3;
+      if (sweight == 0){
+        sweight = 3;
+      }
+    }
+  }
+
 
 function printCanvas(){
   print('Print');

@@ -33,7 +33,7 @@ function newConnection(socket) {
   }
 }
 
-/*function getRandomColor() {
+function getRandomColor() {
   var letters = '0123456789ABCDEF';
   var color = '#';
   for (var i = 0; i < 6; i++) {
@@ -43,4 +43,4 @@ function newConnection(socket) {
     color = '#000000';
   }
   return color;
-}*/
+}
