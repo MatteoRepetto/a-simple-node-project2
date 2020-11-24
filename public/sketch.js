@@ -10,6 +10,11 @@ let a = 3;
 let info1;
 let info2;
 let info3;
+let info4;
+let info5;
+let info6;
+let info7;
+let info8;
 
 socket.on("mouseBroadcast", drawOtherMouse);
 //socket.on("connect", newConnection);
@@ -59,9 +64,33 @@ function setup() {
 
   background('white');
 
-  buttonPrint = createButton('SAVE');
-  buttonPrint.position(width/2, 750);
+  buttonPrint = createButton('SAVE YOUR WORK');
+  buttonPrint.position(1250, 30);
   buttonPrint.mousePressed(printCanvas);
+
+  info1 = createP("Press W to draw");
+  info1.position(50, 700);
+
+  info2 = createP("Press Q to stop drawing");
+  info2.position(50, 750);
+
+  info3 = createP("Switch to RED pencil by pressing R");
+  info3.position(350, 700);
+
+  info4 = createP("Switch to BLUE pencil by pressing B");
+  info4.position(350, 750);
+
+  info5 = createP("Press E to use the eraser");
+  info5.position(750, 700);
+
+  info6 = createP("Press Z to restart ONLY your canvas");
+  info6.position(750, 750);
+
+  info6 = createP("press UP to increase thickness");
+  info6.position(1150, 700);
+
+  info6 = createP("press DOWN to reduce thickness");
+  info6.position(1150, 750);
 }
 
 function draw() {
