@@ -5,6 +5,11 @@ let buttonPrint;
 let myCanvas;
 let linedPaper;
 let sweight = 0;
+let a = 3;
+
+let info1;
+let info2;
+let info3;
 
 socket.on("mouseBroadcast", drawOtherMouse);
 //socket.on("connect", newConnection);
@@ -55,7 +60,7 @@ function setup() {
   background('white');
 
   buttonPrint = createButton('SAVE');
-  buttonPrint.position(width/2, 20);
+  buttonPrint.position(width/2, 750);
   buttonPrint.mousePressed(printCanvas);
 }
 
@@ -98,14 +103,15 @@ function mouseMoved() {
 function keyPressed() {
   if (key == 'e' ) {
     myColor = "white";
+    a = sweight;
     sweight = 10;
   }
-  else if (key == 'o'){
+  else if (key == 'q'){
     sweight = 0;
   }
-  else if (key == 'i') {
+  else if (key == 'w') {
     myColor = "black";
-    sweight = 3;
+    sweight = a;
   }
   else if (key == 'z'){
     clear();
@@ -113,9 +119,11 @@ function keyPressed() {
   }
   else if (key == 'r'){
     myColor = "red";
+    sweight = a;
   }
   else if (key == 'b'){
     myColor = "blue";
+    sweight = a;
   }
   else if (keyCode === UP_ARROW) {
       sweight += 10;
