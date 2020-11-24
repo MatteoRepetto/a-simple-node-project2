@@ -3,15 +3,15 @@ let myColor = 'black';
 let buttonPrint;
 
 let myCanvas;
+let linedPaper;
 let sweight = 0;
-//let playerCanvas;
 
-socket.on("connect", newConnection);
 socket.on("mouseBroadcast", drawOtherMouse);
-socket.on("color", setColor);
-socket.on("newPlayer", newPlayer);
+//socket.on("connect", newConnection);
+//socket.on("color", setColor);
+//socket.on("newPlayer", newPlayer);
 
-function newPlayer(newPlayerColor) {
+/*function newPlayer(newPlayerColor) {
   console.log(newPlayerColor)
   //add a rect on the welcome message when a new player joins
   push();
@@ -45,15 +45,12 @@ function drawOtherMouse(data) {
 }
 
 function preload(){
-  // put preload code here
+
 }
 
 function setup() {
-  myCanvas = createCanvas(windowWidth, 700);
+  myCanvas = createCanvas(windowWidth, 560);
   myCanvas.position(0, 90);
-
-  //playerCanvas = createCanvas(800, 50);
-  //playerCanvas.position(windowWidth/2, windowHeight/2);
 
   background('white');
 
@@ -63,8 +60,17 @@ function setup() {
 }
 
 function draw() {
-
-
+push();
+  stroke('Gray');
+  line(0, 70, width, 70);
+  line(0, 140, width, 140);
+  line(0, 210, width, 210);
+  line(0, 280, width, 280);
+  line(0, 350, width, 350);
+  line(0, 420, width, 420);
+  line(0, 490, width, 490);
+  line(0, 560, width, 560);
+pop();
 }
 
 function mouseMoved() {
@@ -94,10 +100,10 @@ function keyPressed() {
     myColor = "white";
     sweight = 10;
   }
-  else if (key == 'k'){
+  else if (key == 'o'){
     sweight = 0;
   }
-  else if (key == 'b') {
+  else if (key == 'i') {
     myColor = "black";
     sweight = 3;
   }
@@ -105,15 +111,21 @@ function keyPressed() {
     clear();
     background('white');
   }
+  else if (key == 'r'){
+    myColor = "red";
+  }
+  else if (key == 'b'){
+    myColor = "blue";
+  }
   else if (keyCode === UP_ARROW) {
-      sweight += 5;
-      if (sweight > 25){
+      sweight += 10;
+      if (sweight > 43){
         sweight = 3;
       }
     }
   else if (keyCode === DOWN_ARROW) {
-      sweight -= 3;
-      if (sweight == 0){
+      sweight -= 10;
+      if (sweight < 0){
         sweight = 3;
       }
     }
