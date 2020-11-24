@@ -5,7 +5,6 @@ let buttonPrint;
 let myCanvas;
 let linedPaper;
 let sweight = 0;
-let a = 3;
 
 let info1;
 let info2;
@@ -83,7 +82,7 @@ function setup() {
   info5 = createP("Press E to use the eraser");
   info5.position(750, 700);
 
-  info6 = createP("Press Z to restart ONLY your canvas");
+  info6 = createP("Press Z to clean ONLY your canvas");
   info6.position(750, 750);
 
   info6 = createP("press UP to increase thickness");
@@ -132,15 +131,14 @@ function mouseMoved() {
 function keyPressed() {
   if (key == 'e' ) {
     myColor = "white";
-    a = sweight;
-    sweight = 10;
+    sweight = 3;
   }
   else if (key == 'q'){
     sweight = 0;
   }
   else if (key == 'w') {
     myColor = "black";
-    sweight = a;
+    sweight = 3;
   }
   else if (key == 'z'){
     clear();
@@ -148,11 +146,11 @@ function keyPressed() {
   }
   else if (key == 'r'){
     myColor = "red";
-    sweight = a;
+    sweight = 3;
   }
   else if (key == 'b'){
     myColor = "blue";
-    sweight = a;
+    sweight = 3;
   }
   else if (keyCode === UP_ARROW) {
       sweight += 10;
